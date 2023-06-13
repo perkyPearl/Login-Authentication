@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication Prototype | Login </title>
+    <style>
+        body{
+            background-color: rgb(11, 9, 19);
+        }
+
+        .container{
+            display: flex;
+            background-color: rgba(212, 212, 212, 0.192);
+            margin: 50px auto;
+            width: max-content;
+            height: fit-content;
+            border-radius: 20px;
+        }
+
+        input{
+            background-color: rgb(71, 71, 71);
+            color: white;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            padding: 8px;
+            width: 30vw;
+            border-radius: 5px;
+            margin: 8px 0px;
+        }
+
+        .inputData{
+            margin: 15px;
+        }
+
+        .imageContainer img{
+            width: 500px;
+            height: 100%;
+            border-radius: 20px 0px 0px 20px;
+        }
+
+        .loginContainer{
+            width: max-content;
+            padding: 10px;
+        }
+
+        label, h1{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: rgb(0, 0, 0);
+        }
+
+        label{
+            font-size: 18px;
+        }
+
+        button{
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            background-color: rgb(71, 71, 71);
+            color: gray;
+        }
+
+        button:hover{
+            transition: .3s ease-in-out;
+            background-color: rgb(0, 0, 0);
+        }
+
+        button:active{
+            transition: .1s ease-out;
+            background-color: rgb(37, 37, 37);
+        }
+
+        h1{
+            text-align: center;
+            margin: 40px;
+        }
+
+        .error{
+            color: rgba(255, 0, 0, 0.815);
+            height: 14px;
+        }
+
+        center p{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        center a{
+            color: gray;
+        }
+
+        .name{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .name input{
+            width: 14vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="imageContainer">
+            <img src="Media/SideImage.jpg" alt="">
+        </div>
+        <div class="loginContainer">
+            <h1>Register</h1>
+            <div class="name inputData">
+                <div>
+                    <label for="fname">First Name: </label><br>
+                    <input type="text" id="fname" placeholder="John"><br>
+                </div>
+                <div>
+                    <label for="lname">Last Name: </label><br>
+                    <input type="text" id="lname" placeholder="Doe"><br>
+                </div>
+            </div>
+            <div class="inputData">
+                <label for="email">Email: </label><br>
+                <input type="email" id="email" placeholder="abc@example.com">
+            </div>
+            <div class="inputData">
+                <label for="phoneNum">Phone Number: </label><br>
+                <input type="number" id="phoneNum" placeholder="Enter your Phone Number">
+            </div>
+            <div class="inputData">
+                <label for="pass">Password: </label><br>
+                <input type="password" id="pass" placeholder="Enter your Password">
+                <div class="error">
+                    <span id="passError"></span>
+                </div>
+            </div>
+            <div class="inputData">
+                <label for="cpass">Confirm Password: </label><br>
+                <input type="password" id="cpass" placeholder="Enter your Password">
+                <div class="error">
+                    <span id="cpassError"></span>
+                </div>
+            </div><br>
+            <center>
+                <button onclick="SignUp()">Register</button>
+            </center>
+        </div>
+    </div>
+</body>
+</html>
