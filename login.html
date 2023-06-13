@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Authentication Prototype | Login </title>
     <style>
         body{
             background-color: rgb(11, 9, 19);
@@ -18,7 +18,7 @@
             border-radius: 20px;
         }
 
-        #name, #pass{
+        input{
             background-color: rgb(71, 71, 71);
             color: white;
             border: none;
@@ -30,8 +30,8 @@
             margin: 8px 0px;
         }
 
-        .name, .pass{
-            margin: 15px;
+        .inputData{
+            margin: 6px;
         }
 
         .imageContainer img{
@@ -66,6 +66,11 @@
             background-color: rgb(0, 0, 0);
         }
 
+        button:active{
+            transition: .1s ease-out;
+            background-color: rgb(37, 37, 37);
+        }
+
         h1{
             text-align: center;
             margin: 40px;
@@ -92,14 +97,14 @@
         </div>
         <div class="loginContainer">
             <h1>Login</h1>
-            <div class="name">
+            <div class="inputData">
                 <label for="name">Email: </label><br>
                 <input type="text" id="name" placeholder="abc@example.com"><br>
                 <div class="error">
                     <span id="emailError"></span>
                 </div>
             </div>
-            <div class="pass">
+            <div class="inputData">
                 <label for="pass">Password: </label><br>
                 <input type="password" id="pass" placeholder="Enter your Password">
                 <div class="error">
@@ -107,7 +112,7 @@
                 </div>
             </div><br>
             <center>
-                <button onclick="login">Login</button>
+                <button onclick="login()">Login</button>
                 <p>Don't have account? <a href="register.html">Sign Up</a></p>
             </center>
         </div>
