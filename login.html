@@ -21,7 +21,7 @@
         input{
             background-color: rgb(71, 71, 71);
             color: white;
-            border: none;
+            border: 2px solid rgb(71, 71, 71);
             outline: none;
             font-size: 14px;
             padding: 8px;
@@ -99,7 +99,7 @@
             <h1>Login</h1>
             <div class="inputData">
                 <label for="name">Email: </label><br>
-                <input type="text" id="name" placeholder="abc@example.com"><br>
+                <input type="text" id="email" placeholder="Enter your Email/Username"><br>
                 <div class="error">
                     <span id="emailError"></span>
                 </div>
@@ -116,6 +116,46 @@
                 <p>Don't have account? <a href="register.html">Sign Up</a></p>
             </center>
         </div>
-    </div>
+    </div>  
+    <script>
+        var email = document.getElementById("email")
+        var pass = document.getElementById("pass")
+
+        function login() {
+            reset()
+            data = localStorage.getItem("users")
+            data = JSON.parse(data)
+
+            var emailError = true
+            var passError = true
+            
+            for(let i=0;i<data.length;i++){
+                if(data[i]['email'] == email.value || data[i]['username'] == email.value){
+                    emailError = false
+                    console.log("Email Verified!")
+                    if(data[i]['pass'] == pass.value){
+                        passError = false
+                        console.log("Password Verified!")
+                        localStorage.setItem("loggedIn",data[i]['username'])
+                        window.location.assign('index.html')
+                    }
+                    break
+                }
+            }
+
+            if(emailError){
+                email.style.border = "2px solid rgb(255,0,0)"
+            }
+            if(passError){
+                pass.style.border = "2px solid rgb(255,0,0)"
+            }
+
+        }
+
+        function reset(){
+            email.style.border = "2px solid rgb(71, 71, 71)"
+            pass.style.border = "2px solid rgb(71, 71, 71)"
+        }
+    </script>
 </body>
 </html>
