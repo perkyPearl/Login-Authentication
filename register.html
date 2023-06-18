@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authentication Prototype | Register </title>
     <style>
-        body{
+        body {
             background-color: rgb(11, 9, 19);
         }
 
-        .container{
+        .container {
             display: flex;
             background-color: rgba(212, 212, 212, 0.192);
             margin: 50px auto;
@@ -18,10 +18,10 @@
             border-radius: 20px;
         }
 
-        input{
+        input {
             background-color: rgb(71, 71, 71);
             color: white;
-            border: none;
+            border: 2px solid rgb(71, 71, 71);
             outline: none;
             font-size: 14px;
             padding: 8px;
@@ -30,31 +30,33 @@
             margin: 8px 0px;
         }
 
-        .inputData{
-            margin: 15px;
+        .inputData {
+            margin: 10px;
         }
 
-        .imageContainer img{
+        .imageContainer img {
             width: 500px;
             height: 100%;
             border-radius: 20px 0px 0px 20px;
         }
 
-        .loginContainer{
+        .loginContainer {
             width: max-content;
             padding: 10px;
         }
 
-        label, h1{
+        label,
+        h1 {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             color: rgb(0, 0, 0);
         }
 
-        label{
+        label {
             font-size: 18px;
         }
 
-        button{
+        button {
+            margin: 10px;
             border: none;
             padding: 8px 15px;
             border-radius: 5px;
@@ -62,44 +64,45 @@
             color: gray;
         }
 
-        button:hover{
+        button:hover {
             transition: .3s ease-in-out;
             background-color: rgb(0, 0, 0);
         }
 
-        button:active{
+        button:active {
             transition: .1s ease-out;
             background-color: rgb(37, 37, 37);
         }
 
-        h1{
+        h1 {
             text-align: center;
-            margin: 40px;
+            margin: 20px;
         }
 
-        .error{
+        .error {
             color: rgba(255, 0, 0, 0.815);
             height: 14px;
         }
 
-        center p{
+        center p {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
 
-        center a{
+        center a {
             color: gray;
         }
 
-        .name{
+        .name {
             display: flex;
             justify-content: space-between;
         }
 
-        .name input{
+        .name input {
             width: 14vw;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="imageContainer">
@@ -118,6 +121,10 @@
                 </div>
             </div>
             <div class="inputData">
+                <label for="username">Username: </label><br>
+                <input type="text" id="username" placeholder="Enter Your Username">
+            </div>
+            <div class="inputData">
                 <label for="email">Email: </label><br>
                 <input type="email" id="email" placeholder="abc@example.com">
             </div>
@@ -128,21 +135,98 @@
             <div class="inputData">
                 <label for="pass">Password: </label><br>
                 <input type="password" id="pass" placeholder="Enter your Password">
-                <div class="error">
-                    <span id="passError"></span>
-                </div>
             </div>
             <div class="inputData">
                 <label for="cpass">Confirm Password: </label><br>
                 <input type="password" id="cpass" placeholder="Enter your Password">
-                <div class="error">
-                    <span id="cpassError"></span>
-                </div>
-            </div><br>
+            </div>
             <center>
-                <button onclick="SignUp()">Register</button>
+                <button onclick="isEmpty()">Register</button>
             </center>
         </div>
     </div>
+    <script>
+        var fname = document.getElementById("fname")
+        var lname = document.getElementById("lname")
+        var email = document.getElementById("email")
+        var username = document.getElementById("username")
+        var phoneNum = document.getElementById("phoneNum")
+        var pass = document.getElementById("pass")
+        var cpass = document.getElementById("cpass")
+
+        function error(id) {
+            id.style.border = "2px solid rgb(255,0,0)"
+        }
+
+        function reset(){
+            fname.style.border = "2px solid rgb(71,71,71)"
+            lname.style.border = "2px solid rgb(71,71,71)" 
+            email.style.border = "2px solid rgb(71,71,71)" 
+            username.style.border = "2px solid rgb(71,71,71)" 
+            phoneNum.style.border = "2px solid rgb(71,71,71)" 
+            pass.style.border = "2px solid rgb(71,71,71)" 
+            cpass.style.border = "2px solid rgb(71,71,71)"
+        }
+
+        function validate() {
+            var data = localStorage.getItem("users");
+            var dataArray = JSON.parse(data) || [];
+
+            var newData = { 
+                fname: fname.value, 
+                lname: lname.value,
+                email: email.value,
+                username: username.value,
+                phoneNum: phoneNum.value,
+                pass: pass.value
+            };
+
+            dataArray.push(newData);
+
+            var updatedData = JSON.stringify(dataArray);
+
+            localStorage.setItem("users",updatedData);
+            window.location.assign("login.html")
+        }
+
+        function isEmpty() {
+            reset()
+            var isEmpty = false
+
+            if (fname.value == "") {
+                isEmpty = true
+                error(fname)
+            }
+            if (lname.value == "") {
+                isEmpty = true
+                error(lname)
+            }
+            if (email.value == "") {
+                isEmpty = true
+                error(email)
+            }
+            if (username.value == "") {
+                isEmpty = true
+                error(username)
+            }
+            if (phoneNum.value == "") {
+                isEmpty = true
+                error(phoneNum)
+            }
+            if (pass.value == "") {
+                isEmpty = true
+                error(pass)
+            }
+            if (cpass.value == "") {
+                isEmpty = true
+                error(cpass)
+            }
+
+            if (!isEmpty) {
+                validate()
+            }
+        }
+    </script>
 </body>
+
 </html>
