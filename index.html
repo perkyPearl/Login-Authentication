@@ -49,16 +49,37 @@
         <div class="flex">
             <div class="nav">
                 <a href="index.html">Home</a>
-                <a href="">Projects</a>
-                <a href="">Blog</a>
-                <a href="">FAQ</a>
-                <a href="">Contact</a>
+                <a href="projects.html">Projects</a>
+                <a href="blogs.html">Blog</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
             </div>
-            <div class="nav">
-                <a href="login.html">Login</a>
+            <div class="nav" id="loginbox" style="color: white;">
+                <a id="login"></a>
             </div>
         </div>
     </header>
+    <script>
+        var loginbox = document.getElementById("loginbox")
+        var login = document.getElementById("login")
+        if(localStorage.getItem("loggedIn")){
+            login.textContent = `Hey, ${localStorage.getItem("loggedIn")}`
+            login.setAttribute("onclick","logout()")
+        }else{
+            login.textContent = "Login"
+            login.setAttribute("onclick","redirect()")
+        }
+
+        function redirect(){
+            console.log("logging in")
+            window.location.assign("login.html")
+        }
+
+        function logout(){
+            localStorage.removeItem("loggedIn")
+            window.location.assign("index.html")
+        }
+    </script>
 </body>
 
 </html>
