@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authentication Prototype | Register </title>
     <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
         body {
             background-color: rgb(11, 9, 19);
         }
@@ -100,10 +106,49 @@
         .name input {
             width: 14vw;
         }
+
+        .nav a {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            text-decoration: none;
+            align-items: flex-end;
+            padding: 5px;
+            font-size: 18px;
+        }
+
+        header {
+            background-color: #070707;
+            padding: 20px;
+            height: 60px;
+        }
+
+        .flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 95%;
+            margin-left: 20px;
+            height: 100%;
+        }
     </style>
 </head>
 
 <body>
+    <header>
+        <div class="flex">
+            <div class="nav">
+                <a href="index.html">Home</a>
+                <a href="">Projects</a>
+                <a href="">Blog</a>
+                <a href="">FAQ</a>
+                <a href="">Contact</a>
+            </div>
+            <div class="nav">
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    </header>
+
     <div class="container">
         <div class="imageContainer">
             <img src="Media/SideImage.jpg" alt="">
@@ -158,13 +203,13 @@
             id.style.border = "2px solid rgb(255,0,0)"
         }
 
-        function reset(){
+        function reset() {
             fname.style.border = "2px solid rgb(71,71,71)"
-            lname.style.border = "2px solid rgb(71,71,71)" 
-            email.style.border = "2px solid rgb(71,71,71)" 
-            username.style.border = "2px solid rgb(71,71,71)" 
-            phoneNum.style.border = "2px solid rgb(71,71,71)" 
-            pass.style.border = "2px solid rgb(71,71,71)" 
+            lname.style.border = "2px solid rgb(71,71,71)"
+            email.style.border = "2px solid rgb(71,71,71)"
+            username.style.border = "2px solid rgb(71,71,71)"
+            phoneNum.style.border = "2px solid rgb(71,71,71)"
+            pass.style.border = "2px solid rgb(71,71,71)"
             cpass.style.border = "2px solid rgb(71,71,71)"
         }
 
@@ -172,8 +217,8 @@
             var data = localStorage.getItem("users");
             var dataArray = JSON.parse(data) || [];
 
-            var newData = { 
-                fname: fname.value, 
+            var newData = {
+                fname: fname.value,
                 lname: lname.value,
                 email: email.value,
                 username: username.value,
@@ -185,7 +230,7 @@
 
             var updatedData = JSON.stringify(dataArray);
 
-            localStorage.setItem("users",updatedData);
+            localStorage.setItem("users", updatedData);
             window.location.assign("login.html")
         }
 
