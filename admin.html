@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="navbar.css">
+    <style>
+        table{
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        td{
+            height: 30px;
+            padding: 4px 4vw;
+        }
+
+        thead{
+            background-color: black;
+            color: white;
+        }
+
+        button{
+            padding: 8px;
+            border: none;
+            background-color: rgb(64, 72, 114);
+            border-radius: 5px;
+        }
+
+        .container{
+            background-color: white;
+            width: fit-content;
+            margin: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="flex">
+            <div class="nav">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="blogs.html">Blog</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav" id="loginbox" style="color: white;">
+                <a id="login"></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- <div class="grid">
+        <div class="index">1</div>
+        <div class="name">Pearl</div>
+        <div class="uname">perkyPearl</div>
+        <div class="email">pearl.dhiman2003@gmail.com</div>
+        <button onclick="remove">Remove</button>
+    </div> -->
+    <div class="container">
+        <table>
+            <thead>
+                <td>Index</td>
+                <td>Name</td>
+                <td>Username</td>
+                <td>Email</td>
+                <td></td>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        // const container = document.getElementsByClassName("flex");
+        const table = document.querySelector("tbody")
+
+        function add(i,name,uname,email){
+            var tr = document.createElement("tr")
+            var indexBox = document.createElement("td")
+            var nameBox = document.createElement("td")
+            var unameBox = document.createElement("td")
+            var emailBox = document.createElement("td")
+            var buttonBox = document.createElement("td")
+            var button = document.createElement("button")
+
+            button.setAttribute("onclick",`remove(${i})`)
+
+            indexBox.textContent = i+1
+            nameBox.textContent = name
+            unameBox.textContent = uname
+            emailBox.textContent = email
+            button.textContent = "Remove"
+
+            buttonBox.append(button)
+
+            tr.append(indexBox,nameBox,unameBox,emailBox,buttonBox)
+            table.append(tr)
+        }
+
+        var data = JSON.parse(localStorage.getItem("users"))
+        for(let i=0;i<data.length;i++){
+            add(i,data[i]["fname"],data[i]["username"],data[i]["email"])
+        }
+
+        function remove(i){
+            data.splice(i,1)
+            console.log(data)
+            localStorage.setItem("users",JSON.stringify(data))
+            location.reload()
+        }
+    </script>
+</body>
+</html>
