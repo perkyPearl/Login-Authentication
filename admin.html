@@ -6,6 +6,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="navbar.css">
     <style>
+        *{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         table{
             border-collapse: collapse;
             border-spacing: 0;
@@ -14,6 +18,10 @@
         td{
             height: 30px;
             padding: 4px 4vw;
+        }
+
+        tr:nth-child(even){
+            background-color: rgb(223, 223, 223);
         }
 
         thead{
@@ -28,10 +36,15 @@
             border-radius: 5px;
         }
 
+        button:hover{
+            transition: .5s ease-in;
+            background-color: rgb(199, 102, 102);
+        }
+
         .container{
             background-color: white;
             width: fit-content;
-            margin: auto;
+            margin: 50px auto;
             border-radius: 8px;
         }
     </style>
@@ -51,14 +64,6 @@
             </div>
         </div>
     </header>
-
-    <!-- <div class="grid">
-        <div class="index">1</div>
-        <div class="name">Pearl</div>
-        <div class="uname">perkyPearl</div>
-        <div class="email">pearl.dhiman2003@gmail.com</div>
-        <button onclick="remove">Remove</button>
-    </div> -->
     <div class="container">
         <table>
             <thead>
@@ -88,21 +93,26 @@
 
             button.setAttribute("onclick",`remove(${i})`)
 
-            indexBox.textContent = i+1
+            indexBox.textContent = i
             nameBox.textContent = name
             unameBox.textContent = uname
             emailBox.textContent = email
             button.textContent = "Remove"
 
-            buttonBox.append(button)
-
+            if(name){
+                buttonBox.append(button)
+            }
             tr.append(indexBox,nameBox,unameBox,emailBox,buttonBox)
             table.append(tr)
         }
 
         var data = JSON.parse(localStorage.getItem("users"))
-        for(let i=0;i<data.length;i++){
-            add(i,data[i]["fname"],data[i]["username"],data[i]["email"])
+        if(data.length>0){
+            for(let i=0;i<data.length;i++){
+                add(i,data[i]["fname"],data[i]["username"],data[i]["email"])
+            }
+        }else{
+            add("No Data")
         }
 
         function remove(i){
