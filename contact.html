@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .nav a {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            text-decoration: none;
+            align-items: flex-end;
+            padding: 5px;
+            font-size: 18px;
+        }
+
+        body {
+            background-color: paleturquoise;
+            background-color: rgb(11, 9, 19);
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        header {
+            background-color: #070707;
+            padding: 20px;
+            height: 60px;
+        }
+
+        .flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 95%;
+            margin-left: 20px;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="flex">
+            <div class="nav">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="blogs.html">Blog</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav" id="loginbox" style="color: white;">
+                <a id="login"></a>
+            </div>
+        </div>
+    </header>
+    <script>
+        var loginbox = document.getElementById("loginbox")
+        var login = document.getElementById("login")
+        if(localStorage.getItem("loggedIn")){
+            login.textContent = `Hey, ${localStorage.getItem("loggedIn")}`
+            login.setAttribute("onclick","logout()")
+        }else{
+            login.textContent = "Login"
+            login.setAttribute("onclick","redirect()")
+        }
+
+        function redirect(){
+            console.log("logging in")
+            window.location.assign("login.html")
+        }
+
+        function logout(){
+            localStorage.removeItem("loggedIn")
+            window.location.assign("index.html")
+        }
+    </script>
+</body>
+</html>
