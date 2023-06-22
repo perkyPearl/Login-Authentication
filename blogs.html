@@ -39,6 +39,29 @@
             margin-left: 20px;
             height: 100%;
         }
+
+        footer {
+            margin-top: 10px;
+            background-color: rgb(0, 0, 0);
+            padding: 40px;
+        }
+
+        .footerlinks a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 5px;
+        }
+
+        .footerlinks a:hover {
+            text-decoration: underline;
+        }
+
+        footer p {
+            color: white;
+            height: 40px;
+        }
     </style>
 </head>
 <body>
@@ -56,6 +79,18 @@
             </div>
         </div>
     </header>
+    <footer>
+        <center>
+            <p>Authentication Prototype-©2023</p>
+            <div class="footerlinks">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="blogs.html">Blog</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </center>
+    </footer>
     <script>
         var loginbox = document.getElementById("loginbox")
         var login = document.getElementById("login")
