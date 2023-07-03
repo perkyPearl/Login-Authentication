@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,6 +65,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="flex">
@@ -79,6 +81,13 @@
             </div>
         </div>
     </header>
+
+    <div class="container">
+        <center>
+            <img src="Media/UnderConstruction.jpg" style="width: 80%; margin-top:20px; border-radius: 20px;">
+        </center>
+    </div>
+
     <footer>
         <center>
             <p>Authentication Prototype-©2023</p>
@@ -91,26 +100,28 @@
             </div>
         </center>
     </footer>
+
     <script>
         var loginbox = document.getElementById("loginbox")
         var login = document.getElementById("login")
-        if(localStorage.getItem("loggedIn")){
+        if (localStorage.getItem("loggedIn")) {
             login.textContent = `Hey, ${localStorage.getItem("loggedIn")}`
-            login.setAttribute("onclick","logout()")
-        }else{
+            login.setAttribute("onclick", "logout()")
+        } else {
             login.textContent = "Login"
-            login.setAttribute("onclick","redirect()")
+            login.setAttribute("onclick", "redirect()")
         }
 
-        function redirect(){
+        function redirect() {
             console.log("logging in")
             window.location.assign("login.html")
         }
 
-        function logout(){
+        function logout() {
             localStorage.removeItem("loggedIn")
             window.location.assign("index.html")
         }
     </script>
 </body>
+
 </html>

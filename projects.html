@@ -10,7 +10,7 @@
             margin: 0px;
             padding: 0px;
         }
-
+        
         .nav a {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: white;
@@ -39,6 +39,25 @@
             max-width: 95%;
             margin-left: 20px;
             height: 100%;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+
+        .project{
+            background-color: rgb(70, 70, 70);
+            border-radius: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            padding: 90px 150px;
+            width: max-content;
+        }
+
+        .project:hover{
+            scale: 1.1;
+            transition: 250ms ease;
         }
 
         footer {
@@ -81,6 +100,11 @@
             </div>
         </div>
     </header>
+
+    <div class="container">
+
+    </div>
+
     <footer>
         <center>
             <p>Authentication Prototype-©2023</p>
@@ -112,6 +136,18 @@
         function logout() {
             localStorage.removeItem("loggedIn")
             window.location.assign("index.html")
+        }
+
+        const cont = document.querySelector(".container")
+
+        for(let i=1;i<=3*5;i++){
+            const div = document.createElement("div")
+            const h2 = document.createElement("h2")
+            div.setAttribute("class","project")
+
+            h2.textContent = `Project ${i}`
+            div.append(h2)
+            cont.append(div)
         }
     </script>
 </body>
